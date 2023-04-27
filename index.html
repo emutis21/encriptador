@@ -18,7 +18,7 @@
       href="styles.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <div class="svg">
         <svg
           viewBox="0 0 120 48"
@@ -31,8 +31,18 @@
             fill="#0A3871" />
         </svg>
       </div>
-      <h1>Encriptador de texto</h1>
-      <p class="name">Esteban S Mutis</p>
+      <div class="title">
+        <h1>Encriptador de texto</h1>
+        <p>Esteban Smith Mutis</p>
+      </div>
+      <div class="switch">
+        <label for="switch">
+          <input
+            type="checkbox"
+            id="switch" />
+          <span class="btn"></span>
+        </label>
+      </div>
     </header>
     <main class="container">
       <article class="article">
@@ -513,8 +523,8 @@
         </button>
       </aside>
     </main>
-    <footer>
-      <p>&copy; 2023 Encriptador de texto.</p>
+    <footer class="footer">
+      <p>&copy; 2023</p>
     </footer>
     <script>
       const input = document.querySelector("#input");
@@ -522,10 +532,18 @@
       const span = document.querySelector("aside span");
       const explorador = document.querySelector(".explorador");
       const tercerBoton = document.querySelector(".t-button");
+
+      const themeButton = document.querySelector("#switch");
+      const selectedTheme = localStorage.getItem("selected-theme");
+      const darkTheme = "dark-theme";
+
       tercerBoton.style.display = "none";
       input.focus();
 
       function encriptar() {
+        if (input.value === "") {
+          return;
+        }
         const clave = {
           a: "q",
           b: "w",
@@ -581,6 +599,9 @@
       }
 
       function desencriptar() {
+        if (input.value === "") {
+          return;
+        }
         const clave = {
           q: "a",
           w: "b",
@@ -644,6 +665,20 @@
         document.execCommand("copy");
         document.body.removeChild(textarea);
       }
+
+      const getCurrentTheme = () =>
+        document.body.classList.contains(darkTheme) ? "dark" : "light";
+
+      if (selectedTheme) {
+        document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
+          darkTheme
+        );
+      }
+
+      themeButton.addEventListener("click", () => {
+        document.body.classList.toggle(darkTheme);
+        localStorage.setItem("selected-theme", getCurrentTheme());
+      });
     </script>
   </body>
 </html>
