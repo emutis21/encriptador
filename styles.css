@@ -208,7 +208,7 @@ input[type="checkbox"]:checked ~ .btn::after {
 .f-button {
   padding: 24px;
   background-color: var(--dark-blue);
-  color: var(--white);
+  color: var(--light-gray);
   width: 50%;
   border: none;
 }
