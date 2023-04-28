@@ -679,6 +679,20 @@
         document.body.classList.toggle(darkTheme);
         localStorage.setItem("selected-theme", getCurrentTheme());
       });
+      const savedTheme = localStorage.getItem("selected-theme");
+
+      if (savedTheme) {
+        document.body.classList.toggle(darkTheme, savedTheme === "dark");
+        themeButton.checked = savedTheme === "dark";
+      }
+
+      themeButton.addEventListener("change", (event) => {
+        const isChecked = event.target.checked;
+
+        localStorage.setItem("selected-theme", isChecked ? "dark" : "light");
+
+        document.body.classList.toggle(darkTheme, isChecked);
+      });
     </script>
   </body>
 </html>
