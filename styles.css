@@ -7,6 +7,7 @@
   --dark-blue: hsl(213, 84%, 24%);
   --light-blue-transparent: hsla(213, 84%, 24%, 0.5);
   --second-white: hsl(227, 60%, 97%);
+  --box-shadow-aside: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
   --font-family: "Poppins", sans-serif;
   --title-font-size: 32px;
   --first-font-size: 24px;
@@ -232,7 +233,7 @@ input[type="checkbox"]:checked ~ .btn::after {
   background-color: var(--white);
   border-radius: var(--first-border-radius);
   padding: 32px;
-  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--box-shadow-aside);
   display: flex;
   flex-direction: column;
 
